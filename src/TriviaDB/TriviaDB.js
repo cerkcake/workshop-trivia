@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SelectCategory from "./SelectCategory";
+import {API_URL} from "../config"
 
 const TriviaDB = () => {
   const [categories, setCategories] = useState([]);
@@ -16,7 +17,7 @@ const TriviaDB = () => {
     // get category list from api
     axios({
       method: "POST",
-      url: `http://localhost:3100/trivia/getCategories`,
+      url: `${API_URL}getCategories`,
     }).then((response) => {
       console.log("getCategories : ", response.data);
 
@@ -34,7 +35,7 @@ const TriviaDB = () => {
       var config = {
         method: "post",
         maxBodyLength: Infinity,
-        url: "http://localhost:3100/trivia/getQuizesByCategory",
+        url: `${API_URL}getQuizesByCategory`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -73,7 +74,7 @@ const TriviaDB = () => {
       var config = {
         method: "post",
         maxBodyLength: Infinity,
-        url: "http://localhost:3100/trivia/submitQuestion",
+        url: `${API_URL}submitQuestion`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -104,7 +105,7 @@ const TriviaDB = () => {
     var config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:3100/trivia/getResults",
+      url: `${API_URL}getResults`,
       headers: {
         "Content-Type": "application/json",
       },
